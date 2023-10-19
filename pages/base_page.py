@@ -39,6 +39,8 @@ class Page:
         print(f'Switching to {all_windows[1]}')
         self.driver.switch_to.window(all_windows[1])
 
+
+
     def switch_to_window(self, window_id):
         print(f'Switching to {window_id}')
         self.driver.switch_to.window(window_id)
@@ -77,3 +79,8 @@ class Page:
 
     def verify_partial_url(self, expected_part_of_url):
         self.wait.until(EC.url_contains(expected_part_of_url))
+
+
+    #def wait_for_page_to_load(self, timeout=10):
+        #wait = WebDriverWait(self.driver, timeout(10))
+        #wait.until(EC.presence_of_element_located(*locator))
