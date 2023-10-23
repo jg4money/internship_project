@@ -5,12 +5,15 @@ from time import sleep
 class Home_Page(Page):
     RUSSIAN_LANGUAGE = (By.CSS_SELECTOR, "a#weglot-language-ru")
     ENGLISH_LANGUAGE = (By.CSS_SELECTOR, "a#weglot-language-en")
+    VERIFY_RUSSIAN = (By.XPATH, '//html[@lang="ru"]')
+    #(By.CSS_SELECTOR, 'div.proparties_text_block')
 
     def change_lang(self):
         self.click(*self.ENGLISH_LANGUAGE)
         self.click(*self.RUSSIAN_LANGUAGE)
+        sleep(5)
         self.refresh()
 
     def verify_lang(self):
-        self.verify_text(*self.RUSSIAN_LANGUAGE)
-        assert "the Language is Russian"
+       self.find_element(*self.VERIFY_RUSSIAN)
+    assert "the Language is Russian"
