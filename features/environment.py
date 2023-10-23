@@ -19,13 +19,13 @@ def browser_init(context):
     context.driver.maximize_window()
 
     ### HEADLESS MODE ####
-    # options = webdriver.ChromeOptions()
-    # options.add_argument('--headless')
-    # service = Service(executable_path='/Users/svetlanalevinsohn/careerist/15-python-selenium-automation/chromedriver')
-    # context.driver = webdriver.Chrome(
-    #     options=options,
-    #     service=service
-    # )
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    service = Service(driver_path)
+    context.driver = webdriver.Chrome(
+         options=options,
+         service=service
+    )
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)

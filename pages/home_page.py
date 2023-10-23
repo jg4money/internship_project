@@ -6,7 +6,7 @@ class Home_Page(Page):
     RUSSIAN_LANGUAGE = (By.CSS_SELECTOR, "a#weglot-language-ru")
     ENGLISH_LANGUAGE = (By.CSS_SELECTOR, "a#weglot-language-en")
     VERIFY_RUSSIAN = (By.XPATH, '//html[@lang="ru"]')
-    #(By.CSS_SELECTOR, 'div.proparties_text_block')
+
 
     def change_lang(self):
         self.click(*self.ENGLISH_LANGUAGE)

@@ -11,6 +11,8 @@ class Login_Page(Page):
     def open_main(self):
         self.driver.get('https://soft.reelly.io/sign-in/ ')
         self.driver.refresh()
+        #sleep(5)- add to run in firefox
+
 
     def login(self):
         self.input_text('grabledjacob@gmail.com', *self.EMAIL_FIELD)
