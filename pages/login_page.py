@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from pages.base_page import Page
 from time import sleep
+from support.logger import logger
 
 
 class Login_Page(Page):
@@ -10,9 +11,9 @@ class Login_Page(Page):
 
     def open_main(self):
         self.driver.get('https://soft.reelly.io/sign-in/ ')
+        logger.info('Opening https://soft.reelly.io/sign-in/')
         self.driver.refresh()
-        #sleep(5)- add to run in firefox
-
+        # sleep(5)- add to run in firefox
 
     def login(self):
         self.input_text('grabledjacob@gmail.com', *self.EMAIL_FIELD)

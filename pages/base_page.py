@@ -1,5 +1,6 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from support.logger import logger
 
 
 class Page:
@@ -9,12 +10,14 @@ class Page:
         self.wait = WebDriverWait(self.driver, 10)
 
     def click(self, *locator):
+        logger.info(f'Clicking on {locator}')
         self.driver.find_element(*locator).click()
 
     def refresh(self):
         self.driver.refresh()
 
     def find_element(self, *locator):
+        logger.info(f'Searching for {locator}')
         return self.driver.find_element(*locator)
 
     def find_elements(self, *locator):
@@ -22,6 +25,7 @@ class Page:
 
     def input_text(self, text, *locator):
         e = self.driver.find_element(*locator)
+        logger.info(f'Inputting text: "{text}"')
         e.send_keys(text)
 
     def get_current_window(self):
@@ -38,8 +42,6 @@ class Page:
         print(all_windows)
         print(f'Switching to {all_windows[1]}')
         self.driver.switch_to.window(all_windows[1])
-
-
 
     def switch_to_window(self, window_id):
         print(f'Switching to {window_id}')
@@ -80,7 +82,6 @@ class Page:
     def verify_partial_url(self, expected_part_of_url):
         self.wait.until(EC.url_contains(expected_part_of_url))
 
-
-    #def wait_for_page_to_load(self, timeout=10):
-        #wait = WebDriverWait(self.driver, timeout(10))
-        #wait.until(EC.presence_of_element_located(*locator))
+    # def wait_for_page_to_load(self, timeout=10):
+    # wait = WebDriverWait(self.driver, timeout(10))
+    # wait.until(EC.presence_of_element_located(*locator))
