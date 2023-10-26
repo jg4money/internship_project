@@ -4,15 +4,26 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from app.application import Application
 from support.logger import logger
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
 
 
 def browser_init(context):
     """
     :param context: Behave context
     """
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
+
+    # driver_path = ChromeDriverManager().install()
+    # service = Service(driver_path)
+    #context.driver = webdriver.Chrome(service=service) #- comment out for mobile emulation
+
+    ##MOBILE EMULATION##
+    # mobile_emulation = {
+    #     "deviceName": "iPhone 12 Pro"
+    #  }
+    # chrome_options = Options()
+    # chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+    # context.driver = webdriver.Chrome(service=service, options=chrome_options)
 
     ### OTHER BROWSERS
     # service = Service(executable_path= "/Users/jacobgrable/QA/python-selenium-automation/geckodriver")
@@ -24,7 +35,7 @@ def browser_init(context):
     # bs_user = 'jacobgrable_02vm1G'
     # bs_key = 'qcMffBqrPwXHx1H7JwoH'
     # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-
+    #
     # options = Options()
     # bstack_options = {
     # 'os': 'Windows',
@@ -40,6 +51,7 @@ def browser_init(context):
     ### HEADLESS MODE ####
     # options = webdriver.ChromeOptions()
     # options.add_argument('--headless')
+    # options.add_argument("--window-size=1920,1080")
     # service = Service(driver_path)
     # context.driver = webdriver.Chrome(
     # options=options,

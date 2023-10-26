@@ -15,7 +15,8 @@ def login(context):
 @then('Change the language of the page to Russian')
 def change_languange(context):
     sleep(5)
-    context.app.home_page.change_lang()
+    context.app.mobile_menu_page.change_lang() #-use when mobile emulaator testing
+    #context.app.home_page.change_lang()
 
 
 @then('Verify the language has changed')
